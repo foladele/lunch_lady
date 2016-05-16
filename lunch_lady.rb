@@ -1,9 +1,10 @@
 # create new class
 
 class LunchMenu
-
+	attr_accessor :display_order
+	
 	def initialize
-
+		@display_order = []
 		show_menu
 	end
 
@@ -32,14 +33,17 @@ class LunchMenu
 					when '1'
 						@meal_ordered = 5.00
 						@cal_meal << @meal_ordered
+						@display_order << "Meatloaf"
 						side_dishes
 					when '2'
 						@meal_ordered = 3.00
 						@cal_meal << @meal_ordered
+						@display_order << "Mystery Meat"
 						side_dishes
 					when '3'
 						@meal_ordered = 1.00	
-						@cal_meal << @meal_ordered				
+						@cal_meal << @meal_ordered	
+						@display_order << "Slop"			
 						side_dishes
 					when '4'
 						puts "Are you sure you want to cancel? (y/n)"
@@ -60,6 +64,7 @@ class LunchMenu
 							exit
 						end		
 				end	
+
 			end
 	 end
 	
@@ -74,7 +79,8 @@ class LunchMenu
 			puts "1: Carrot(1.75)"
 			puts "2: Mystery Yogurt(1.00)"
 			puts "3: Beef Jerkey(.50)"
-			puts "4: Cancel Order/Reset"
+			puts "4: Display Order"
+			puts "5: Cancel Order/Reset"
 			puts "***** Type 'exit' to quit *****"
 
 
@@ -86,16 +92,21 @@ class LunchMenu
 			when '1'
 				@side_dish = 1.75
 				@cal_meal << @side_dish
-
+				@display_order << "Carrot"
 			when '2'
 				@side_dish = 1.00
 				@cal_meal << @side_dish
+				@display_order << "Mystery Yogurt"
 
 			when '3'
 				@side_dish =  0.50
 				@cal_meal << @side_dish
+				@display_order << "Beef Jerkey"
 
 			when '4'
+				@display_order.each {|x| puts x }
+
+			when '5'
 				puts "Are you sure you want to cancel? (y/n)"
 				usr_sel = gets.strip
 				if usr_sel == 'y'
